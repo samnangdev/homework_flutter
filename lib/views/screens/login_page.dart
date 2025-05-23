@@ -1,5 +1,7 @@
-
 import 'package:flutter/material.dart';
+import 'package:homework_w2/views/screens/register_page.dart';
+
+import 'opt_page.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -34,7 +36,7 @@ class _LoginScreenState extends State<LoginScreen> {
               SizedBox(
                 height: 40,
               ),
-              _username,
+              _email,
               SizedBox(
                 height: 30,
               ),
@@ -44,9 +46,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 15,
               ),
               _loginButton,
-              SizedBox(
-                height: 10
-              ),
+              SizedBox(height: 10),
               _signinText1
               // _divided,
               //  SizedBox(
@@ -65,61 +65,101 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  Widget get _signinText1{
+  Widget get _signinText1 {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text("Don't have an account?", style: TextStyle(color: Color.fromARGB(255, 0, 0, 0),), ),
-        TextButton(onPressed: 
-        () {
-          // Navigator.push(context, MaterialPageRoute(builder: (context){}))
-        }, child: Text("Sign In", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.amber[900]),))
+        Text(
+          "Don't have an account?",
+          style: TextStyle(
+            color: Color.fromARGB(255, 0, 0, 0),
+          ),
+        ),
+        TextButton(
+            onPressed: () {
+              // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context){
+              //   return RegisterScreen();
+              // }));
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return RegisterScreen();
+              }));
+            },
+            child: Text(
+              "Sign In",
+              style: TextStyle(
+                  fontWeight: FontWeight.bold, color: Colors.amber[900], fontSize: 15),
+            ))
       ],
     );
   }
 
-
-  Widget get _connection{
+  Widget get _connection {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Image.asset("assets/img/fb.png", width: 100, height: 100,),
-        SizedBox(width: 20,),
-        Image.asset("assets/img/google-logo.png", width: 50, height: 50,),
+        Image.asset(
+          "assets/img/fb.png",
+          width: 100,
+          height: 100,
+        ),
+        SizedBox(
+          width: 20,
+        ),
+        Image.asset(
+          "assets/img/google-logo.png",
+          width: 50,
+          height: 50,
+        ),
       ],
     );
   }
 
-Widget get _signinWith{
+  Widget get _signinWith {
     return Container(
-        child: Text("Sign in with", style: TextStyle(color: Color.fromARGB(255, 0, 0, 0), fontWeight: FontWeight.bold), ),
+      child: Text(
+        "Sign in with",
+        style: TextStyle(
+            color: Color.fromARGB(255, 0, 0, 0), fontWeight: FontWeight.bold),
+      ),
     );
   }
 
-  Widget get _forgetPassword{
+  Widget get _forgetPassword {
     return Container(
       alignment: Alignment.topRight,
       child: TextButton(
-        onPressed: () {
-          
-        },
-        child: Text("Forget Password?", style: TextStyle(color: Colors.black54), ),
+        onPressed: () {},
+        child: Text(
+          "Forget Password?",
+          style: TextStyle(color: Colors.black54),
+        ),
       ),
     );
   }
 
   Widget get _logo {
-    return Center(
-      child: Text(
-        "FastFast",
-        style: TextStyle(
-          fontSize: 60,
-          fontWeight: FontWeight.bold,
-          color: Colors.amber[900],
-          letterSpacing: 2,
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Flexible(
+          child: Text(
+            "FastFast",
+            style: TextStyle(
+              fontSize: 60,
+              fontWeight: FontWeight.bold,
+              color: Colors.amber[900],
+              letterSpacing: 2,
+            ),
+            overflow: TextOverflow.ellipsis,
+          ),
         ),
-        overflow: TextOverflow.ellipsis,
-      ),
+        const SizedBox(width: 8),
+        Icon(
+          Icons.location_on,
+          size: 60,
+          color: Colors.amber[900],
+        ),
+      ],
     );
   }
 
@@ -145,12 +185,12 @@ Widget get _signinWith{
     );
   }
 
-  Widget get _username {
+  Widget get _email {
     return Column(
       children: [
         TextField(
           decoration: InputDecoration(
-              labelText: 'Username',
+              labelText: 'Email',
               prefix: Icon(Icons.person),
               border:
                   OutlineInputBorder(borderRadius: BorderRadius.circular(15))),
@@ -190,7 +230,11 @@ Widget get _signinWith{
           style: ElevatedButton.styleFrom(
               backgroundColor: Colors.amber[900],
               minimumSize: Size(double.infinity, 45)),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context){
+              return OptScreen();
+            }));
+          },
           child: Text(
             "Login",
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),

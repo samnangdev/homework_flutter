@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:homework_w2/views/screens/get_started_page.dart';
+import 'package:homework_w2/views/screens/opt_page.dart';
+import 'package:homework_w2/views/screens/register_page.dart';
 
 void main() {
   final app = MyApp();
